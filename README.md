@@ -1,4 +1,4 @@
-# Image Galary
+# City-locator-ui
 
 Introduction
 
