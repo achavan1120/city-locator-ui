@@ -20,6 +20,7 @@ function App() {
       .catch((err) => console.log(err));
   }, [term]);
 
+  
   return (
     <div className="container mx-auto p-4 md:p-4 lg:p-0">
       <ImageSearch searchText={(text) => setTerm(text)} />
@@ -31,7 +32,7 @@ function App() {
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {cities.map((city) => (
-            <ImageCard key={city.id} city={city} />
+            <ImageCard key={city.id} city={city} searchText={(text) => setTerm(text)} />
           ))}
         </div>
       )}

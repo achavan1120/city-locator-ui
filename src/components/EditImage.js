@@ -11,16 +11,18 @@ const customStyles = {
         transform: 'translate(-50%, -50%)',
     },
 };
-const EditImageCard = ({ city, modalIsOpen, closeModal }) => {
+const EditImageCard = ({ city, modalIsOpen, closeModal, searchText }) => {
     const [name, setName] = useState(city.name);
     const [image, setImage] = useState(city.photo);
     const [message, setMessage] = useState("");
 
-    function save() {
+   const save = (e) => {
+        e.preventDefault();
+
         const requestOptions = {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ id:city.id, name , image})
+            body: JSON.stringify({ id:city.id, name , photo:image})
         };
 
         fetch(`${APP_URL}/city`, requestOptions)
@@ -34,8 +36,8 @@ const EditImageCard = ({ city, modalIsOpen, closeModal }) => {
                     const error = (data && data.message) || response.status;
                     return Promise.reject(error);
                 }
-    
-                setMessage(data)
+                searchText(" ");
+                closeModal()
             })
             .catch(error => {
                 setMessage(error)

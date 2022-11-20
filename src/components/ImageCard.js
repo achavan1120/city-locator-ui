@@ -1,7 +1,7 @@
 import React from "react";
 import EditImageCard from "./EditImage";
 
-const ImageCard = ({ city }) => {
+const ImageCard = ({ city , searchText}) => {
   const [modalIsOpen, setIsOpen] = React.useState(false);
 
   function openModal() {
@@ -28,7 +28,7 @@ const ImageCard = ({ city }) => {
           Edit
         </button>
       </div>
-      <EditImageCard city={city} modalIsOpen={modalIsOpen} closeModal={closeModal} />
+      <EditImageCard city={city} modalIsOpen={modalIsOpen} closeModal={closeModal} searchText={searchText}/>
     </div>
   );
 };
