@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import ImageCard from "./components/ImageCard";
 import ImageSearch from "./components/ImageSearch";
+import { APP_URL } from "./constant/contant";
 
 function App() {
   const [cities, setCities] = useState([]);
@@ -9,7 +10,7 @@ function App() {
 
   useEffect(() => {
     fetch(
-      `http://localhost:8800/api/city?name=${term}`
+      `${APP_URL}/city?name=${term}`
     )
       .then((res) => res.json())
       .then((data) => {
